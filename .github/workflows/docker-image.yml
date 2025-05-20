@@ -23,7 +23,7 @@ jobs:
     - name: Docker login (User 2)
       env:
         DOCKER_USER_2: ${{ secrets.DOCKERHUB_USER2 }}
-        DOCKER_PASS_2: ${{ secrets.DOCKERHUB_PASSWORD2 }}
+        DOCKER_PASS_2: ${{ secrets.DOCKERHUB_PASS2 }}
       run: |
         docker login -u $DOCKER_USER2 -p $DOCKER_PASS2
  
