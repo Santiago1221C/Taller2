@@ -4,7 +4,7 @@ const os = require("os");
 
 const getRandomPokenea = () => {
  const randomIndex = Math.floor(Math.random() * pokeneas.length);
- return pokeneas[randomIndex];
+ return { ...pokeneas[randomIndex], containerId: os.hostname() };
 };
 const getRandomPokeneaWithImage = () => {
  randomPokenea = getRandomPokenea();
@@ -12,7 +12,7 @@ const getRandomPokeneaWithImage = () => {
   name: randomPokenea.name,
   imageRoute: randomPokenea.image,
   phrase: randomPokenea.philosophicalPhrase,
-  containerId: os.hostname(),
+  containerId: randomPokenea.containerId,
  };
 };
 

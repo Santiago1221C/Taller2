@@ -13,7 +13,7 @@ router.get("/random", (req, res) => {
   name: pokenea.name,
   height: pokenea.height,
   ability: pokenea.ability,
-  philosophicalPhrase: pokenea.philosophicalPhrase,
+  containerId: pokenea.containerId,
  });
 });
 
