@@ -20,15 +20,15 @@ jobs:
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASS
  
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag santi1221/taller2:latest
+ 
     - name: Docker login (User 2)
       env:
         DOCKER_USER_2: ${{ secrets.DOCKERHUB_USER2 }}
         DOCKER_PASS_2: ${{ secrets.DOCKERHUB_PASS2 }}
       run: |
         docker login -u $DOCKER_USER_2 -p $DOCKER_PASS_2
- 
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag santi1221/taller2:latest
  
     - name: Tag the image for second repository
       run: docker tag santi1221/taller2:latest dgrisalesp/pokeneas:latest
