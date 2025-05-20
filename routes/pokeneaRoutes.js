@@ -6,7 +6,6 @@ const {
  getRandomPokeneaWithImage,
 } = require("../utils/pokeneaUtils");
 
-// Ruta para obtener un Pokenea aleatorio con su frase filosófica
 router.get("/random", (req, res) => {
  const pokenea = getRandomPokenea();
  res.json({

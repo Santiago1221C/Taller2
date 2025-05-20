@@ -1,3 +1,4 @@
+const { name } = require("ejs");
 const { pokeneas } = require("../data/pokeneas");
 const os = require("os");
 
@@ -8,6 +9,7 @@ const getRandomPokenea = () => {
 const getRandomPokeneaWithImage = () => {
  randomPokenea = getRandomPokenea();
  return {
+  name: randomPokenea.name,
   imageRoute: randomPokenea.image,
   phrase: randomPokenea.philosophicalPhrase,
   containerId: os.hostname(),
