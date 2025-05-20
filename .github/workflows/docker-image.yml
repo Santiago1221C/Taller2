@@ -1,27 +1,40 @@
 name: Docker Image CI
-
+ 
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-
+ 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
+ 
     steps:
     - uses: actions/checkout@v2
-    - name: docker login
+ 
+    - name: Docker login (User 1)
       env:
-        DOCKER_USER: ${{secrets.DOCKERHUB_USER}}
-        DOCKER_PASS: ${{secrets.DOCKERHUB_PASS}}
+        DOCKER_USER: ${{ secrets.DOCKERHUB_USER }}
+        DOCKER_PASS: ${{ secrets.DOCKERHUB_PASS }}
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASS
+ 
+    - name: Docker login (User 2)
+      env:
+        DOCKER_USER_2: ${{ secrets.DOCKERHUB_USER2 }}
+        DOCKER_PASS_2: ${{ secrets.DOCKERHUB_PASSWORD2 }}
+      run: |
+        docker login -u $DOCKER_USER2 -p $DOCKER_PASS2
+ 
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag santi1221/taller2:latest
-      
-    - name: Docker Push
-      run: docker push santi1221/taller2
+ 
+    - name: Tag the image for second repository
+      run: docker tag santi1221/taller2:latest dgrisalesp/pokeneas:latest
+ 
+    - name: Docker Push to first repository
+      run: docker push santi1221/taller2:latest
+ 
+    - name: Docker Push to second repository
+      run: docker push dgrisalesp/pokeneas:latest
