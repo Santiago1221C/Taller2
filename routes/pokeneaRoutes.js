@@ -18,21 +18,9 @@ router.get("/random", (req, res) => {
  });
 });
 
-// Ruta para obtener un Pokenea aleatorio con su imagen
 router.get("/image", (req, res) => {
- const pokenea = getRandomPokenea();
- res.json({
-  id: pokenea.id,
-  name: pokenea.name,
-  height: pokenea.height,
-  ability: pokenea.ability,
-  image: pokenea.image,
- });
-});
-
-router.get("/dynamic", (req, res) => {
  const data = getRandomPokeneaWithImage();
- res.render("dynamic", {
+ res.render("randomImagePhrase", {
   data: data,
  });
 });
